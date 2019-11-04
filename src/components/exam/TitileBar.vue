@@ -45,7 +45,6 @@
             <van-swipe-item><img src="../../assets/carousel4.jpg" alt=""></van-swipe-item>
         </van-swipe>
     </div>
-
     <!-- 每日新品 -->
     <div class="second_item">
         <router-link to=""><img src="../../assets/second1.png" alt="">

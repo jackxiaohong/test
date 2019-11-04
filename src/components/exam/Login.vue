@@ -32,11 +32,7 @@
                    <span> 短信验证码登录</span>
                </a>
            </div>
-        
-
        </div>
-        
-        
     </div>
 </template>
 <script>
@@ -80,7 +76,8 @@ data() {
           this.$messagebox("消息", "用户名或者密码错误");
         } else {
           // 11.登录成功跳转 /product
-          this.$router.push("/register")
+          this.$store.commit("setIslogin", true);
+          this.$router.push("/tabbaricon1")
            }
       });
     }

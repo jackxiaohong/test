@@ -24,13 +24,6 @@
        <div  class="second"  @click="font_change" >
            <Router-link to=""  >简体</Router-link><span>|</span><Router-link to="">繁体</Router-link><span>|</span><Router-link to="">English</Router-link><span>|</span><Router-link to="" >常见问题</Router-link>
        </div>
-       
-
-
-       <div  class="second"  @click="font_change"  >
-           <Router-link to="" data-id="false">简体</Router-link><span>|</span><Router-link to="" data-id="false">繁体</Router-link><span>|</span><Router-link to="" data-id="false">English</Router-link><span>|</span><Router-link to="" data-id="false">常见问题</Router-link>
-       </div>
-
       <!-- <ul>
          <li v-for="(task,i) of tasks" :key="i">{{i+1}} - {{task}} <a href="javascript:;" @click="del(i)">x</a></li>
       </ul> -->
@@ -131,28 +124,28 @@ export default {
     //       this.currentIndex=index;
 
     // }
-    font_change (e){
-        // console.log(e.target)
-        // if(e.target.nodeName=="A"){
-        // e.target.style.color="#000";
-        // e.target=true;
-        // }
-         console.log(e.target.dataset.id);
-        if(e.target){
-            e.target.dataset.id=true;
+    // font_change (e){
+    //     // console.log(e.target)
+    //     // if(e.target.nodeName=="A"){
+    //     // e.target.style.color="#000";
+    //     // e.target=true;
+    //     // }
+    //      console.log(e.target.dataset.id);
+    //     if(e.target){
+    //         e.target.dataset.id=true;
          
-        }else{
-          e.target.dataset.id=false;
+    //     }else{
+    //       e.target.dataset.id=false;
       
-        }
-        if(e.target.dataset.id=true){
-           e.target.style.color="#000"
-          e.target.dataset.id=false;
-        }else{
-          e.target.style.color="#e1dad6";
+    //     }
+    //     if(e.target.dataset.id=true){
+    //        e.target.style.color="#000"
+    //       e.target.dataset.id=false;
+    //     }else{
+    //       e.target.style.color="#e1dad6";
 
-        }
-    }
+    //     }
+    // }
 
   }
 };

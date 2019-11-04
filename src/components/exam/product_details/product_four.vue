@@ -1,7 +1,6 @@
 
 <template>
 <div class="box" >
-  <div>1111111</div>
   <div class="list-view" ref="listView">
     <ul>
       <li v-for="group in singers" class="list-group" :key="group.id" ref="listGroup">
@@ -968,10 +967,10 @@ export default {
       // width: 100px;
       padding: 25px 0px;
       line-height: 1;
-      color: black;
+      color: #927154;
       font-size: 15px;
       &.current {
-        color: #927154;
+        color: #000;
         // font-weight: bold;
       }
     }

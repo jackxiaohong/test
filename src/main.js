@@ -36,7 +36,7 @@ Vue.config.productionTip = false
 /*引入Vuex*/
 import Vuex from 'vuex'
 Vue.use(Vuex)
-export default new Vuex.Store({
+var store =  new Vuex.Store({
   //vuex全局共享数据
   state:{
     //登录状态
@@ -51,7 +51,7 @@ export default new Vuex.Store({
   //获取vuex中全局共享数据
   getters:{
     //获取登录状态
-    getIslogin: state =>{
+    getIslogin(state){
       return state.isLogin
     }
   },
@@ -64,6 +64,7 @@ export default new Vuex.Store({
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -8,6 +8,22 @@
                     <!-- 调用子组件 -->
                     <TitileBar></TitileBar>
                 </mt-tab-container-item>
+                <mt-tab-container-item id="tab1">
+                    <!-- 调用子组件 -->
+                    <Product></Product>
+                </mt-tab-container-item>
+                <mt-tab-container-item id="tab2">
+                    <!-- 调用子组件 -->
+                    <pingwei></pingwei>
+                </mt-tab-container-item>
+                <mt-tab-container-item id="tab3">
+                    <!-- 调用子组件 -->
+                    <TitileBar></TitileBar>
+                </mt-tab-container-item>
+                <mt-tab-container-item id="tab4">
+                    <!-- 调用子组件 -->
+                    <personal></personal>
+                </mt-tab-container-item>
             </mt-tab-container>
                 <!-- 3底部导航条 -->
         <mt-tabbar fixed v-model="active">
@@ -46,6 +62,9 @@
 <script>
 import TabbarIcon from "./TabbarIcon.vue";
 import TitileBar from "./TitileBar.vue";
+import personal from "./personal.vue";
+import product_four from "./product_details/product_four.vue"
+import pingwei from "./pingwei.vue"
 export default {
   data() {
     return {
@@ -72,7 +91,10 @@ export default {
   },
   components: {
     "TabbarIcon": TabbarIcon,
-    "TitileBar":TitileBar
+    "TitileBar":TitileBar,
+    "personal":personal,
+    "Product":product_four,
+    "pingwei":pingwei
   }
 };
 </script>
