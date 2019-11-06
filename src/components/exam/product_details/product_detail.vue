@@ -2,7 +2,7 @@
     <div class="container"> 
         <!-- 抬头 -->
         <div class="title">
-            <img src="../../../assets/product_detail_fanhui.png" alt="" class="title_img">
+            <img src="../../../assets/product_detail_fanhui.png" alt="" class="title_img" @click="$router.push('/tabbaricon1')">
             <span>商品详情</span>
         </div>
         <!-- 大图 -->
@@ -87,22 +87,24 @@
                     <!-- <img :src="'http://127.0.0.1:5050//'+list.img_url" alt=""> -->
                     <div v-text="`￥${list.price}`"></div>
                     <div class="Repertory">库存
-                        <span v-text="list.repertory" style="color:green"></span>
+                        <span v-text="list.repertory" style="color:green"></span>件
                     </div>
                     </div>
                 <div class="Spec_select">
                     <div class="size" v-for="(task,t) of tasks" :key="t">
                         <span class="size_name"> {{task.name}}</span>
                         <div class="size_select">
-                            <span v-for="(Item,index) of task.project" :key="index"></span>
+                            <span v-for="(Item,index) of task.Items" :key="index">{{Item.names}}</span>
                         </div>
                     </div>
                 </div>
-                <div class="name">
-                    <span>数量</span>
-                    <span @click="addNum(-1)">-</span>
-                    <input type="text" v-model="number">
-                    <span @click="addNum(+1)">+</span>
+                <div class="count">
+                    <span class="count_left">数量</span>
+                    <div class="Input">
+                        <span @click="addNum(-1)">-</span>
+                        <input type="text" v-model="number">
+                        <span @click="addNum(+1)">+</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,12 +129,44 @@ export default {
         { name: "中评 (2)" },
         { name: "差评 (2)" }
       ],
-      show_spec:false,
-      number:1,
-      list:{img_url:"https://img.youpin.mi-img.com/goods/51a5a631db5b1f08a60e6d612a10f507.jpg@base@tag=imgScale&F=webp&h=166&w=166",
-      price:220,repertory:120
+      show_spec: false,
+      number: 1,
+      list: {
+        img_url:
+          "https://img.youpin.mi-img.com/goods/51a5a631db5b1f08a60e6d612a10f507.jpg@base@tag=imgScale&F=webp&h=166&w=166",
+        price: 220,
+        repertory: 120
       },
-      tasks:[{name:""}]
+      tasks: [
+        {
+          name: "尺寸",
+          Items: [
+            {
+              names: "5寸"
+            },
+            {
+              names: "6寸"
+            },
+            {
+              names: "7寸"
+            }
+          ]
+        },
+        {
+          name: "系列",
+          Items: [
+            {
+              names: "屏风"
+            },
+            {
+              names: "水雾森林"
+            },
+            {
+              names: "双子星"
+            }
+          ]
+        }
+      ]
     };
   },
   methods: {
@@ -146,15 +180,23 @@ export default {
       event.target.style.color = "#f00";
     },
     //点击遮罩层退出选择规格选择
-    cancel(){
-        this.show_spec=false;
+    cancel() {
+      this.show_spec = false;
     },
-    select(){
-        // if(this.$store.getters.getIslogin){
-            this.show_spec=true;
-        // }else{
-        //     this.$toast("请先登录")
-        // }
+    select() {
+      // if(this.$store.getters.getIslogin){
+      this.show_spec = true;
+      // }else{
+      //     this.$toast("请先登录")
+      // }
+    },
+    addNum(i){
+        if(i == -1&&this.number==1){
+            this.number=1;
+        }else{
+            var number =Number(this.number);
+            this.number=number+i;
+        }
     }
   }
 };
@@ -358,40 +400,111 @@ export default {
   border-radius: 5px 5px 5px 5px;
 }
 
-.select_spec{
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
+.select_spec {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
-.mask{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0,0, 0.5)
+.mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-.Spec{
-    width: 100%;    
-    position: fixed;
-    bottom: 4rem;
-    background-color: #fff;
-    z-index: 9;
+.Spec {
+  width: 100%;
+  position: fixed;
+  bottom: 4rem;
+  background-color: #fff;
+  z-index: 9;
+}
+
+.spec_list {
+  width: 100%;
+  height:60px;
+  position: relative;
+  border-bottom: 2px solid #f00;
+}
+.Spec img {
+  position: absolute;
+  top: -65px;
+  left: 10px;
+  width: 120px;
+  height: 120px;
+}
+
+.Spec_select{
+    padding: 15px 10px 10px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.Spec_select .size_select{
+    margin-top: 10px;
+    overflow: hidden;
+}
+.Spec_select .size{
+    overflow: hidden;
+    text-align: left;
+}
+.size_select span{
+    border: 1px solid #000;
+    border-radius: 5px;
+    /* display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap; */
+    float: left;
+    /* text-align: center; */
+    padding: 0px 10px 0px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 35px;
+    line-height: 35px;
+}
+
+.size_name{
+    display: inline-table;
+    /* margin-top: 10px; */
+    text-align: left !important;
+}
+
+.count{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 8px 0px 4px;
+}
+.count_left{
+    /* float: left; */
+}
+.Input{
+    /* float: right; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.Input span{
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    line-height: 30px;
+    background-color: #ccc;
+    margin-right: 5px;
+    text-align: center;
 
 }
-
-.spec_list{
-    width: 100%;
-    height: 110px;
-    position: relative;
-    border-bottom: 2px solid #f00;
-}
-.Spec img{
-    position: absolute;
-    top: -65px;
-    left: 10px;
-    width: 120px;
-    height: 120px;
+.Input input{
+    width: 30px;
+    height: 25px;
+    background-color: #ccc;
+    outline: none;
+    text-align: center;
+    margin-right: 4px;
 }
 
 

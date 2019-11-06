@@ -1,6 +1,6 @@
 <template>
 
-    <div>
+    <div class="container">
             <!-- 2面板 切换不同内容 -->
             <mt-tab-container v-model="active">
                  <!-- 子面板 -->
@@ -110,6 +110,10 @@ export default {
   background-color: transparent;
   color: #aa9271;
 }
+
+/* .container{
+    margin:0 auto;
+} */
 </style>
 
 

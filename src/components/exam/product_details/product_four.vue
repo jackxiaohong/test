@@ -1,4 +1,3 @@
-
 <template>
 <div class="box" >
   <div class="list-view" ref="listView">
@@ -82,30 +81,30 @@ export default {
               avatar:
                 'http://p3.music.126.net/h-ynyQrpyIvfJeW_DeaqHA==/1385384666932895.jpg'
             },
-            {
-              id: 9621,
-              name: '王菲',
-              avatar:
-                'http://p4.music.126.net/GKhjgN1ltQYK3eYf9DdJwg==/18727981557622763.jpg'
-            },
-            {
-              id: 4292,
-              name: '李荣浩',
-              avatar:
-                'http://p4.music.126.net/tpH_HIHPDjRZep1pJC3q2w==/109951163062593811.jpg'
-            },
-            {
-              id: 7763,
-              name: 'G.E.M.邓紫棋',
-              avatar:
-                'http://p4.music.126.net/r7uMnwjWpYMuQI_3ZTg56A==/18528969953189760.jpg'
-            },
-            {
-              id: 6460,
-              name: '张学友',
-              avatar:
-                'http://p3.music.126.net/1JG8Uwzb5XAJXaPUHR6RBw==/3238061747024716.jpg'
-            }
+            // {
+            //   id: 9621,
+            //   name: '王菲',
+            //   avatar:
+            //     'http://p4.music.126.net/GKhjgN1ltQYK3eYf9DdJwg==/18727981557622763.jpg'
+            // },
+            // {
+            //   id: 4292,
+            //   name: '李荣浩',
+            //   avatar:
+            //     'http://p4.music.126.net/tpH_HIHPDjRZep1pJC3q2w==/109951163062593811.jpg'
+            // },
+            // {
+            //   id: 7763,
+            //   name: 'G.E.M.邓紫棋',
+            //   avatar:
+            //     'http://p4.music.126.net/r7uMnwjWpYMuQI_3ZTg56A==/18528969953189760.jpg'
+            // },
+            // {
+            //   id: 6460,
+            //   name: '张学友',
+            //   avatar:
+            //     'http://p3.music.126.net/1JG8Uwzb5XAJXaPUHR6RBw==/3238061747024716.jpg'
+            // }
           ]
         },
         {
@@ -802,7 +801,7 @@ export default {
             //        }
           ],  
       scrollY: 0,
-      currentIndex: 0
+      currentIndex: 0,
     }
   },
   created () {
@@ -820,7 +819,6 @@ export default {
         probeType: 3,
         click: true
       })
-
       this.scroll.on('scroll', (pos) => {
         this.scrollY = pos.y
       })
@@ -880,7 +878,6 @@ export default {
         this.currentIndex = 0
         return
       }
-
       // 计算 currentIndex 的值
       for (let i = 0; i < this.listHeight.length - 1; i++) {
         let height1 = this.listHeight[i]

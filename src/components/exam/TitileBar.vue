@@ -76,11 +76,8 @@
                 <span>{{item.price}}</span>
             </div>
         </div>
-        
     </div>
     </div>
-    
-
 </div>
 </template>
 
